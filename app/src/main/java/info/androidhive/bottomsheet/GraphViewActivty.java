@@ -52,9 +52,15 @@ public class GraphViewActivty extends AppCompatActivity {
 
 
         LineDataSet dataSet = new LineDataSet(entries, "Customized values");
-        dataSet.setColor(ContextCompat.getColor(this, R.color.colorPrimary));
-        dataSet.setValueTextColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
-
+        dataSet.setColor(ContextCompat.getColor(this, R.color.graph_color));
+        dataSet.setDrawValues(false);
+        dataSet.setDrawCircles(false);
+        dataSet.setValueTextColor(ContextCompat.getColor(this, R.color.graph_color));
+        chart.getAxisLeft().setDrawGridLines(false);
+        chart.getXAxis().setDrawGridLines(false);
+        chart.getAxisLeft().setTextColor(ContextCompat.getColor(this, R.color.graph_color)); // left y-axis
+        chart.getXAxis().setTextColor(ContextCompat.getColor(this, R.color.graph_color));
+        chart.getLegend().setTextColor(ContextCompat.getColor(this, R.color.graph_color));
         //****
         // Controlling X axis
         XAxis xAxis = chart.getXAxis();
@@ -90,6 +96,7 @@ public class GraphViewActivty extends AppCompatActivity {
         LineData data = new LineData(dataSet);
         chart.setData(data);
         chart.animateX(250);
+
         //refresh
         chart.invalidate();
     }
